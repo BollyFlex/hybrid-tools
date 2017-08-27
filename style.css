@@ -129,16 +129,19 @@ textarea#input {
 	font-size: 1.5rem;
 }
 
+.slot-item {
+	word-wrap: break-word;
+}
+
 .slot-item span {
 	display: inline-block;
 	float: left;
 	background: #555;
 	border: 1px solid #777;
-	margin: 1rem;
-	padding: 1rem 2rem;
-	width: calc(50% - 4rem);
+	margin: 0;
+	padding: 4px;
+	width: 100%;
 	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.333);
-	height: 150px;
 }
 
 #generate {

@@ -117,11 +117,13 @@
 			var randKeyIdx = m_RandomIntInRange( 0, keys.length - 1 );
 			var randKey = keys[ randKeyIdx ];
 
-			return onj[ randKey ];
+			return obj[ randKey ];
 		}
 
 
 		function m_GenerateCombo(){
+
+			var blind = false;
 
 			// Choose 1 possible value from each of 2 random stats from each of the 3 groups
 			for( var key in m_Groups ){
@@ -134,8 +136,18 @@
 
 					for( var s = 0; s < m_NumStatsPerGroup; s++ ){
 
-						var randStat = group[ groupStatKeys[ s ] ];
+						var statKey = groupStatKeys[ s ];
+						var randStat = group[ statKey ];
 						var randStatVal = m_PickRandomElement( randStat );
+
+						if( blind === true && ( statKey === 'fieldOfVision' || statKey === 'nightVision' ) ){
+							
+							continue;
+
+						}else if( randStatVal === 'blind' ){
+							
+							blind = true;
+						}
 
 						slotHtml += '<span>' + randStatVal + '</span>';
 					}
